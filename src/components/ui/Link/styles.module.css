@@ -15,13 +15,13 @@
 }
 
 .variant-primary {
-  color: #2e2e2e;
-  text-decoration-color: #2e2e2e;
+  color: var(--text-dark);
+  text-decoration-color: var(--text-dark);
 }
 
 .variant-primary:hover {
-  color: #0066cc;
-  text-decoration-color: #0066cc;
+  color: color-mix(in srgb, var(--text-dark) 70%, white 30%);
+  text-decoration-color: color-mix(in srgb, var(--text-dark) 70%, white 30%);
 }
 
 .variant-secondary {

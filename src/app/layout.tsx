@@ -16,8 +16,8 @@ const bricolageGrotesque = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  title: "Atlas Matemático",
-  description: "Um guia para a matemática",
+  title: "InnerLift",
+  description: "InnerLift - A platform for personal growth and development",
 };
 
 export default function RootLayout({

@@ -4,12 +4,21 @@
   height: 100vh;
   margin: 0;
   width: 100%;
+  color: var(--text-light)
+}
+.background {
+  position: absolute;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/sunflower-bg-2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.placeholderSection {
+.logoSection {
   width: 50%;
-  background-color: #2E2E2E;
-  border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,18 +26,43 @@
   margin: 20px;
 }
 
-.placeholderText {
-  color: #FFFFFF;
+.logoSection .logo {
+  text-shadow: 0px 4px 4.8px rgb(0, 0, 0);
+  width: 257px;
+  height: 257px;
+  object-fit: cover;
+  object-position: center;
 }
 
+.logoText {
+  color: var(--secondary);
+  line-height: 63px;
+  font-size: 128px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-align: left;
+  text-shadow: 0px 4px 4.8px rgb(0, 0, 0);
+}
+
+
 .loginContent {
-  width: 50%;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 0 160px;
+  justify-content: center;
+  padding: 20px 0;
   gap: 20px;
-  overflow: scroll;
-  margin: 20px 0;
+  
+  margin: 80px;
+  background-color: var(--secondary-light);
+  border-radius: 24px;
+}
+
+.loginContent .container{
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 10px 40px;
+  border-radius: 24px;
 }
 
 .header {
@@ -40,16 +74,17 @@
 }
 
 .title {
-  font-size: 32px;
+  font-size: 48px;
   font-weight: 700;
-  margin-bottom: 12px;
-  color: #2E2E2E;
+  line-height: 100%;
+  color: var(--text-dark);
 }
 
 .subtitle {
   font-size: 16px;
   font-weight: 400;
-  color: #666666;
+  color: var(--text-dark);
+  margin-bottom: 12px;
 }
 
 .signupLink {
@@ -60,7 +95,7 @@
 
 .signupLink p {
   font-size: 14px;
-  color: #2E2E2E;
+  color: var(--text-dark);
 }
 
 .socialButtons {

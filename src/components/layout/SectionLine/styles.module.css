@@ -1,7 +1,8 @@
 .section-box{
   width: 100%;
-  color: #B3B3B3;
-  font-size: 12px;
+  color: var(--text-light);
+  font-size: 14px;
+  font-weight: 400;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,7 +11,9 @@
 }
 
 .section-box .line {
-  background-color: #B3B3B3;
+  --height: 1px;
+  background-color: var(--text-light);
   flex: 1;
-  height: 1px;
+  height: var(--height);
+  border-radius: calc(var(--height) / 2);
 }

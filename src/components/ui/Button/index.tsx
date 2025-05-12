@@ -2,8 +2,7 @@
 
 import styles from "./styles.module.css";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
-import { ButtonVariant, ButtonSize, ButtonProps } from "@/types/Button";
+import { ButtonVariant, ButtonProps } from "@/types/Button";
 
 export default function Button(props: ButtonProps) {
   const iconPosition = props.iconPosition || "left";
@@ -11,6 +10,7 @@ export default function Button(props: ButtonProps) {
     if (props.disabled) return;
 
     try {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       props.onClick && (await props.onClick());
     } catch (error) {
       console.error("Button click error:", error);

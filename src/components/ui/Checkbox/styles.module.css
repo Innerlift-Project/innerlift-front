@@ -9,6 +9,8 @@
   align-items: center;
   position: relative;
   cursor: pointer;
+  justify-content: center;
+  
 }
 
 .checkbox {
@@ -17,32 +19,35 @@
   -moz-appearance: none;
   width: 20px;
   height: 20px;
-  border: 2px solid #333;
+  border: 2px solid var(--bl-3);
   border-radius: 4px;
-  background-color: #fff;
+  background-color: var(--wh-1);
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
   padding: 0;
+
+  
 }
 
 .checkbox:checked {
-  border-color: #333;
+  border-color: var(--bl-3);
+  
 }
 
 .checkbox:focus {
-  outline: 2px solid #4d90fe;
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
 .checkmark {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity 0.2s ease;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .checkbox:checked ~ .checkmark {
@@ -51,31 +56,30 @@
 
 .checkIcon {
   width: 16px;
-  height: 16px;
-  color: #333;
+  color: var(--bl-3);
 }
 
 .labelText {
   cursor: pointer;
   font-size: 14px;
   line-height: 1.5;
-  color: #333;
+  color: var(--bl-3);
 }
 
 /* Variant styles */
 .variant-default:checked {
-  background-color: #4d90fe;
-  border-color: #333;
+  background-color: var(--wh-1);
+  border-color: var(--primary);
 }
 
 .variant-primary:checked {
-  background-color: #0066cc;
-  border-color: #333;
+  background-color: var(--wh-1);
+  border-color: var(--primary);
 }
 
 .variant-secondary:checked {
-  background-color: #ff6b6b;
-  border-color: #333;
+  background-color: var(--wh-1);
+  border-color: var(--secondary);
 }
 
 /* Hover effects */
@@ -84,13 +88,13 @@
 }
 
 .variant-default:hover {
-  background-color: #f0f0f0;
+  background-color: var(--wh-2);
 }
 
 .variant-primary:hover {
-  border-color: #0066cc;
+  border-color: var(--primary);
 }
 
 .variant-secondary:hover {
-  border-color: #ff6b6b;
+  border-color: var(--secondary);
 }

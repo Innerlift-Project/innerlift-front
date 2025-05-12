@@ -87,7 +87,7 @@ export default function LoginForm() {
           onChange={(e) => setRememberMeValue(e.target.checked)}
         />
         <div>
-          <Link href="/#" variant={LinkVariant.SECONDARY}>
+          <Link href="/#" variant={LinkVariant.PRIMARY}>
             Esqueceu a senha?
           </Link>
         </div>

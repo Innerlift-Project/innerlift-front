@@ -13,8 +13,8 @@
 }
 
 .variant-primary {
-  background-color: #2e2e2e;
-  color: #ffffff;
+  background-color: var(--text-dark);
+  color: var(--wh-1);
 }
 
 .variant-primary:hover {
@@ -23,7 +23,7 @@
 
 .variant-secondary {
   background-color: #4d4d4d;
-  color: #ffffff;
+  color: var(--wh-1);
 }
 
 .variant-secondary:hover {
@@ -32,8 +32,8 @@
 
 .variant-outline {
   background-color: transparent;
-  border: 1px solid #e7e6e6;
-  color: #e7e6e6;
+  border: 1px solid var(--wh-2);
+  color: var(--wh-2);
 }
 
 .variant-outline:hover {
@@ -41,13 +41,13 @@
 }
 
 .variant-ghost {
-  background-color: #ffffff;
-  border: 2px solid #f0f0f0;
+  background-color: var(--wh-1);
+  border: 2px solid var(--wh-2);
   color: #2e2e2e;
 }
 
 .variant-ghost:hover {
-  background-color: #f8f8f8;
+  background-color: var(--wh-2);
 }
 
 .size-small {
@@ -62,6 +62,7 @@
 
 .size-large {
   padding: 12px 24px;
+  font-weight: 600;
   font-size: 18px;
 }
 
@@ -75,6 +76,6 @@
 }
 
 .button:focus {
-  outline: 2px solid #4d90fe;
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
