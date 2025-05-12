@@ -1,0 +1,16 @@
+.section-box{
+  width: 100%;
+  color: #B3B3B3;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.section-box .line {
+  background-color: #B3B3B3;
+  flex: 1;
+  height: 1px;
+}

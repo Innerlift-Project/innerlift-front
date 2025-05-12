@@ -1,0 +1,41 @@
+.link {
+  text-decoration: underline;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.variant-default {
+  color: inherit;
+  text-decoration-color: currentColor;
+}
+
+.variant-default:hover {
+  color: #2e2e2e;
+  text-decoration-color: #2e2e2e;
+}
+
+.variant-primary {
+  color: #2e2e2e;
+  text-decoration-color: #2e2e2e;
+}
+
+.variant-primary:hover {
+  color: #0066cc;
+  text-decoration-color: #0066cc;
+}
+
+.variant-secondary {
+  color: #666666;
+  text-decoration-color: #666666;
+}
+
+.variant-secondary:hover {
+  color: #ff6b6b;
+  text-decoration-color: #ff6b6b;
+}
+
+.link:focus {
+  outline: 2px solid #4d90fe;
+  outline-offset: 2px;
+  border-radius: 2px;
+}

@@ -1,0 +1,40 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.optionsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.buttonContainer {
+  margin-top: 15px;
+}
+.buttonContainer,
+.inputWraper{
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .formContainer {
+    padding: 15px;
+    gap: 15px;
+  }
+  
+  .optionsContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
