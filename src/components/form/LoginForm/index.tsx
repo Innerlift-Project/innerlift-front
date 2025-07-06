@@ -1,11 +1,6 @@
 "use client";
 import { useState } from "react";
 
-import { auth } from "@/app/firebase/config";
-import {useSignInWithEmailAndPassword} from "react-firebase-hooks/auth";
-
-import { useRouter } from "next/navigation";
-
 import Form from "next/form";
 import InputField from "../../ui/InputField";
 import { FieldTypes } from "../../../types/InputField";
@@ -16,31 +11,29 @@ import Link from "@/components/ui/Link";
 import { LinkVariant } from "@/types/Link";
 import styles from "./styles.module.css";
 
+import { useAuth } from "@/hooks/useAuth";
+
 
 export default function LoginForm() {
   const [usernameOrEmail, setUsernameOrEmailValue] = useState('');
   const [password, setPasswordValue] = useState('');
   const [rememberMe, setRememberMeValue] = useState(false);
-  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
-  const router = useRouter();
 
-  function isValidEmail(email: string): boolean {
-    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return email.trim().length > 0 && emailRegex.test(email);
-  }
+  const {
+    signInRequestEmail,
+    signInRequestUsername,
+  } = useAuth()
+
+  
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (!isValidEmail(usernameOrEmail)) {
-      console.log('Entrada não é um e-mail');
-      return;
-    }
     try {
-      const res = await signInWithEmailAndPassword(usernameOrEmail, password);
-      if (res) {
-        console.log('Login successful:', res.user);
-        router.push('/');
+      if (usernameOrEmail.includes('@')) {
+        await signInRequestEmail(usernameOrEmail, password);
+      } else {
+        await signInRequestUsername(usernameOrEmail, password);
       }
     } catch (error) {
       console.error('Login error:', error);

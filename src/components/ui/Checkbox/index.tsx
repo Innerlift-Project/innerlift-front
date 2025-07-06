@@ -18,6 +18,13 @@ export default function Checkbox(props: CheckboxProps) {
           type="checkbox"
           id={checkboxId}
           className={checkboxClasses}
+          name={props.name}
+          checked={props.checked}
+          onChange={(e) => {
+            if (props.onValueChange) {
+              props.onValueChange(e.target.checked);
+            }
+          }}
         />
         <span className={styles.checkmark}>
           <svg

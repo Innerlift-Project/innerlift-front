@@ -14,4 +14,5 @@ export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   textSize?: number;
   children?: ReactNode;
+  onValueChange?: (value: boolean) => void;
 }

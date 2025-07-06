@@ -1,11 +1,6 @@
 "use client";
-import { useMutation } from '@tanstack/react-query';
-import { createUser } from '@/services/userService';
 
 import { useState } from "react";
-import { auth } from "@/app/firebase/config";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-
 import Form from "next/form";
 import InputField from "../../ui/InputField";
 import { FieldTypes } from "../../../types/InputField";
@@ -15,46 +10,37 @@ import Checkbox from "../../ui/Checkbox";
 import Link from "@/components/ui/Link";
 import { LinkVariant } from "@/types/Link";
 import styles from "./styles.module.css";
-import { UUID } from 'crypto';
+import { useAuth } from "@/hooks/useAuth";
+
 
 export default function SignupForm() {
   const [name, setNameValue] = useState('');
+  const [username, setUsernameValue] = useState('');
   const [email, setEmailValue] = useState('');
   const [password, setPasswordValue] = useState('');
   const [confirmPassword, setConfirmPasswordValue] = useState('');
   const [tosAndPrivacy, setTosAndPrivacyValue] = useState(false);
-  const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
-  const mutation = useMutation({
-    mutationFn: createUser,
-    onSuccess: (data) => {
-      alert(`Usuário ${data.name} criado!`);
-    },
-  });
-
+  const { signUpRequest } = useAuth();
+  
   async function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
     try{
-      event.preventDefault();
-      if (password !== confirmPassword) {
-        alert("As senhas não coincidem!");
-        return;
-      }
-      const res = await createUserWithEmailAndPassword(email, password);
-      if (res) {
-        console.log("Usuário criado com sucesso:", res.user);
-        mutation.mutate({
-          name: name as string,
-          id: res.user.uid as UUID,
-        });
-      }
+      const body = {
+        name,
+        username,
+        email,
+        password,
+        confirmPassword,
+        tosAndPrivacy
+      };
+      await signUpRequest(body);
+
+
     } catch (error) {
       console.error("Erro ao criar usuário:", error);
       alert("Erro ao criar usuário. Tente novamente.");
     }
-    setNameValue('');
-    setEmailValue('');
-    setPasswordValue('');
-    setConfirmPasswordValue('');
-    setTosAndPrivacyValue(false);
+
   }
 
   return (
@@ -68,6 +54,18 @@ export default function SignupForm() {
           placeholder="Jhon Doe"
           value={name}
           onValueChange={(value) => setNameValue(value as string)}
+          required
+        />
+      </div>
+      <div className={styles.inputWraper}>
+        <InputField
+          type={FieldTypes.TEXT}
+          label="Nome de usuário"
+          title="Nome de usuário"
+          name="username"
+          placeholder="jdoe123"
+          value={username}
+          onValueChange={(value) => setUsernameValue(value as string)}
           required
         />
       </div>
@@ -117,7 +115,7 @@ export default function SignupForm() {
           name="tosAndPrivacy"
           id="tosAndPrivacy"
           required
-          onChange={(event) => setTosAndPrivacyValue(event.target.checked)}
+          onValueChange={(value) => setTosAndPrivacyValue(value as boolean)}
           checked={tosAndPrivacy}
         >
           Concordo com os 

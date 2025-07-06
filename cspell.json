@@ -3,7 +3,9 @@
     "ignorePaths": [],
     "dictionaryDefinitions": [],
     "dictionaries": [],
-    "words": [],
+    "words": [
+        "pswd"
+    ],
     "ignoreWords": [],
     "import": [],
     "language": "en,pt,pt_BR"

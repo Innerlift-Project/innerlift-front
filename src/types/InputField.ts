@@ -1,3 +1,4 @@
+import { Control, FieldValues, Path } from 'react-hook-form';
 export enum FieldTypes {
   TEXT = "text",
   PSWD = "password",
@@ -10,8 +11,12 @@ export interface InputOption {
   label: string;
 }
 
-export interface IInputField
+export interface IInputField<T extends FieldValues = FieldValues>
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+  control?: Control<T>;
+  name?: Path<T>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  rules?: any;
   label: string;
   type?: FieldTypes;
   value?: string;
