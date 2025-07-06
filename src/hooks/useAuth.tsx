@@ -4,6 +4,7 @@ import { toast } from 'react-toastify'
 import api from '@/services/api'
 import { validatePassword, validateUsername, validateEmail } from '@/utils/validation'
 import { ISignUpRequestBody } from '@/types/access'
+import { IUser } from '@/types/User'
 
 interface AuthProviderProps {
     readonly children: ReactNode
@@ -25,6 +26,7 @@ interface AuthContextData {
     loading: boolean
     setLoading: (value: boolean) => void
     updateUser: (data: Partial<User>) => void
+    getUserByEmail: (email: string) => Promise<IUser>
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
@@ -73,12 +75,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
     useEffect(() => {
         const initializeAuthState = () => {
             try {
-                const storedToken = localStorage.getItem(STORAGE_KEYS.TOKEN)
-                if (storedToken) setToken(storedToken)
+                const storedToken = localStorage.getItem(STORAGE_KEYS.TOKEN);
+                const storedUser = localStorage.getItem(STORAGE_KEYS.USER);
+                
+                if (storedToken) {
+                    setToken(storedToken);
+                    
+                    if (storedUser) {
+                        setUser(JSON.parse(storedUser));
+                    }
+                }
             } catch (error) {
-                console.error('Error initializing auth state:', error)
+                console.error('Error initializing auth state:', error);
             }
-        }
+        };
 
         initializeAuthState()
     }, [])
@@ -101,6 +111,44 @@ export function AuthProvider({ children }: AuthProviderProps) {
         loadUserData()
     }, [token, loginMethod])
 
+    const getUserByEmail = React.useCallback(
+    async (email: string) => {
+        setLoading(true);
+        try {
+            if (!email) {
+                toast.error('Email é obrigatório');
+                throw new Error('Email é obrigatório');
+            }
+
+            const { data } = await api.get(`/users/email`, {
+                params: { email },
+                headers: token ? { Authorization: `Bearer ${token}` } : undefined
+            });
+
+            const userData: IUser = {
+                id: data.id,
+                fullName: data.fullName,
+                email: data.email,
+                supportLevel: data.supportLevel,
+                pronouns: data.pronouns,
+                bio: data.bio,
+                profilePicture: data.profilePicture,
+                createdAt: data.createdAt
+            };
+
+            setUser(userData);
+            localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(userData));
+            return userData;
+        } catch (error) {
+            handleApiError(error);
+            throw error;
+        } finally {
+            setLoading(false);
+        }
+    },
+    [token, setLoading]
+);
+
     const signInRequestEmail = React.useCallback(
         async (email: string, pswd: string) => {
             setLoading(true)
@@ -112,6 +160,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 const { data } = await api.post('/auth/login', { email, password: pswd })
                 localStorage.setItem(STORAGE_KEYS.TOKEN, data.access_token)
                 setToken(data.access_token)
+                
+                const userData = await getUserByEmail(email);
+                setUser(userData);
+                localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(userData));
+                
                 setLoginMethod('email')
                 toast.success('Login realizado com sucesso!')
                 router.push('/')
@@ -191,6 +244,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
                 setToken(data.access_token)
                 localStorage.setItem(STORAGE_KEYS.TOKEN, data.access_token)
+
+                const userData = await getUserByEmail(body.email);
+                setUser(userData);
+                localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(userData));
+                
                 console.log("Usuário criado com sucesso!");
                 toast.success('Usuário criado com sucesso!');
                 router.push('/')
@@ -229,6 +287,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         loading,
         setLoading,
         updateUser,
+        getUserByEmail,
     }), [
         user,
         token,
@@ -239,6 +298,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         loading,
         setLoading,
         updateUser,
+        getUserByEmail,
     ]);
 
     return (

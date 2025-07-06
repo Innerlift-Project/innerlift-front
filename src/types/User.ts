@@ -1,11 +1,14 @@
 export interface IUser {
-    id: string,
-    fullName: string,
-    email: string,
-    supportLevel: UserSupportLevel | null,
-    pronouns: UserPronouns[] | null,
-    bio: string | null,
-    profilePicture: string | null,
+    id: string;
+    fullName: string;
+    username?: string;
+    email: string;
+    supportLevel: UserSupportLevel | null;
+    pronouns: UserPronouns[] | null;
+    bio: string | null;
+    profilePicture: string | null;
+    createdAt?: string;
+    password?: string; 
 }
 
 export enum UserSupportLevel {
