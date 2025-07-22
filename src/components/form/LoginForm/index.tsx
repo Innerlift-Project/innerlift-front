@@ -31,7 +31,7 @@ export default function LoginForm() {
 
     try {
       if (usernameOrEmail.includes('@')) {
-        await signInRequestEmail(usernameOrEmail, password);
+        const user = await signInRequestEmail(usernameOrEmail, password);
       } else {
         await signInRequestUsername(usernameOrEmail, password);
       }
@@ -77,7 +77,7 @@ export default function LoginForm() {
           name="rememberMe"
           id="rememberMe"
           checked={rememberMe}
-          onChange={(e) => setRememberMeValue(e.target.checked)}
+          onValueChange={(value) => setRememberMeValue(value as boolean)}
         />
         <div>
           <Link href="/#" variant={LinkVariant.PRIMARY}>

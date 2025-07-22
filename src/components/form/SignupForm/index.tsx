@@ -134,7 +134,7 @@ export default function SignupForm() {
           variant={ButtonVariant.PRIMARY}
           size={ButtonSize.LARGE}
         >
-          Entrar
+          Criar Conta
         </Button>
       </div>
     </Form>

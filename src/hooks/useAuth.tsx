@@ -93,24 +93,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
         initializeAuthState()
     }, [])
 
-    useEffect(() => {
-        const loadUserData = async () => {
-            if (!token) return
-
-            try {
-                const { data: userData } = await api.get('customer/me', {
-                    headers: { Authorization: `Bearer ${token}` }
-                })
-                setUser(userData)
-
-            } catch (error) {
-                console.error('Error loading user data:', error)
-            }
-        }
-
-        loadUserData()
-    }, [token, loginMethod])
-
     const getUserByEmail = React.useCallback(
     async (email: string) => {
         setLoading(true);
