@@ -31,7 +31,7 @@ export default function LoginForm() {
 
     try {
       if (usernameOrEmail.includes('@')) {
-        const user = await signInRequestEmail(usernameOrEmail, password);
+        await signInRequestEmail(usernameOrEmail, password);
       } else {
         await signInRequestUsername(usernameOrEmail, password);
       }

@@ -22,12 +22,12 @@
 }
 
 .variant-secondary {
-  background-color: #4d4d4d;
-  color: var(--wh-1);
+  background-color: var(--wh-1);
+  color: var(--wh-3);
 }
 
 .variant-secondary:hover {
-  background-color: #5d5d5d;
+  color: var(--text-dark);
 }
 
 .variant-outline {
@@ -41,8 +41,8 @@
 }
 
 .variant-ghost {
-  background-color: var(--wh-1);
-  border: 2px solid var(--wh-2);
+  background-color: transparent;
+  border: none;
   color: #2e2e2e;
 }
 
@@ -63,7 +63,7 @@
 .size-large {
   padding: 12px 24px;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 24px;
 }
 
 .fullWidth {

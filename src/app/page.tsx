@@ -1,8 +1,26 @@
+"use client";
+
+import NavInterface from "@/components/layout/NavInterface";
+import PageComponent from "@/components/layout/PageComponent";
+import Button from "@/components/ui/Button";
+import { ButtonSize, ButtonVariant } from "@/types/Button";
+import { useRouter } from "next/navigation";
+
 export default function Home() {
+  const router = useRouter()
   return (
     <div>
-      <h1>Página principal</h1>
-      <p>Esta é a página principal</p>
+      <NavInterface>
+        <PageComponent>
+          <Button
+            variant={ButtonVariant.GHOST}
+            size={ButtonSize.LARGE}
+            onClick={() => {router.push('/social');}}
+          >
+            Forms
+          </Button>
+        </PageComponent>
+      </NavInterface>
     </div>
   );
 }

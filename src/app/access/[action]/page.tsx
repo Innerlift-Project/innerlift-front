@@ -76,7 +76,7 @@ export default async function AccessPage({
 
           <div className={styles.socialButtons}>
             <Button
-              variant={ButtonVariant.GHOST}
+              variant={ButtonVariant.SECONDARY}
               size={ButtonSize.LARGE}
               icon={{
                 src: "/google.svg",
@@ -86,7 +86,7 @@ export default async function AccessPage({
               Google
             </Button>
             <Button
-              variant={ButtonVariant.GHOST}
+              variant={ButtonVariant.SECONDARY}
               size={ButtonSize.LARGE}
               icon={{
                 src: "/facebook.svg",

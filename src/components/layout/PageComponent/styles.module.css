@@ -1,0 +1,10 @@
+.pageComponent {
+  display: flex;
+  flex: 1;
+  min-height: 100%;
+  height: fit-content;
+  background-color: var(--wh-1);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+}
