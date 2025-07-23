@@ -7,10 +7,11 @@ import { ButtonSize, ButtonVariant } from "@/types/Button";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import api from '@/services/api'
-
+import Comment from "@/components/layout/Comment";
 import { useEffect, useState } from "react";
 import { IPost } from "@/types/Post";
 import SectionLine from "@/components/layout/SectionLine";
+import { handleDislike, handleLike } from "@/lib/utils";
 
 
 export default function PostPage({ params }: { readonly params: { readonly postid: string } }) {
@@ -48,12 +49,29 @@ export default function PostPage({ params }: { readonly params: { readonly posti
                     <div className={styles.postScroller}>
                         <div className={styles.header}>
                             <h1>{post?.title}</h1>
+                            <h6>{`@${post?.author.username}`}</h6>
                         </div>
                         <SectionLine className={styles.division}> <i className="bi bi-flower2"></i> </SectionLine>
                         <div className={styles.postContent}>
                             <p>{post?.content}</p>
                         </div>
+                        <div className={styles.bottom}>
+                            <div className={styles.tags}>
+                                {post?.tags.map((tag) => {
+                                    const trimmedTag = tag.trim();
+                                    return (
+                                        <span key={trimmedTag} className={styles.tag}>{`#${trimmedTag}`}</span>
+                                    );
+                                })}
+                            </div>
+                        </div>
                         <SectionLine className={styles.division}> <i className="bi bi-flower2"></i> </SectionLine>
+                        <div className={styles.commentSection}> 
+                            <h3>Comentários</h3>
+                            {(post?.coments ?? []).map((comment) => (
+                                <Comment key={comment.id} comment={comment} />
+                            ))}
+                        </div>
                     </div>
                 </div>
                 <div className={styles.commentInput}> 

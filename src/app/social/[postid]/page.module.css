@@ -85,3 +85,15 @@
   height: 100%;
   padding: 0 !important;
 }
+
+.commentSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+  box-sizing: border-box;
+}

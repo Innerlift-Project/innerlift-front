@@ -11,6 +11,18 @@ export interface IPost {
         comments: number;
         reactions: number;
     };
+    coments?: IComment[];
+    reactions?: IReactions[];
+}
+
+export interface IComment {
+    id: string;
+    content: string;
+    createdAt: Date;
+    updatedAt?: Date;
+    authorId: string;
+    postId: string;
+    author: IAuthor;
 }
 
 export interface IAuthor {
@@ -21,4 +33,16 @@ export interface IAuthor {
 
 export interface PostPreviewProps {
     post: IPost;
+}
+
+export interface CommentProps {
+    comment: IComment;
+}
+
+export interface IReactions {
+    id: string;
+    type: string;
+    createdAt: Date;
+    user: IAuthor;
+    postId: string;
 }

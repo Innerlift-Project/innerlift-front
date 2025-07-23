@@ -1,6 +1,17 @@
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
+import api from "@/services/api";
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+export async function handleLike(postId: string) {
+    try {
+        await api.post(`/posts/${postId}/reactions`, {data: {type: "HEART"}});
+    } catch (error) {
+        console.error("Error liking post:", error);
+    }
+}
+
+export async function handleDislike(postId: string) {
+    try {
+        await api.delete(`/posts/${postId}/reactions`, {data: {type: "HEART"}});
+    } catch (error) {
+        console.error("Error liking post:", error);
+    }
 }
