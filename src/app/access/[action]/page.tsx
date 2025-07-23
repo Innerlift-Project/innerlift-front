@@ -72,7 +72,7 @@ export default async function AccessPage({
                 </div>
               </>
             )}
-          <SectionLine text={sectionLineText} />
+          <SectionLine> {sectionLineText} </SectionLine>
 
           <div className={styles.socialButtons}>
             <Button

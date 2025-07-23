@@ -1,0 +1,116 @@
+.social {
+  color: var(--text-dark) !important;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 48px;
+  width: 100%;
+  line-height: 100%;
+  box-sizing: border-box;
+}
+
+.header input {
+  font-family: "Alegreya Sans SC", sans-serif !important;
+  line-height: 100%;
+  font-size: var(--h1-font-size);
+  font-weight: var(--h1-font-weight);
+  color: var(--text-dark);
+  width: 100%;
+}
+
+.backBtn {
+  top: 16px;
+  left: 16px;
+  flex: 0 !important;
+  position: absolute;
+  z-index: 10;
+}
+
+.division i {
+  font-size: 24px;
+}
+
+.postContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  color: var(--text-dark)
+}
+
+.postContent p {
+  max-width: 100%;
+  line-break: normal;
+  word-wrap: normal;
+}
+.sendBtn {
+  background-color: var(--primary) !important;
+  flex: 0 1;
+}
+
+.sendBtn:hover {
+  background-color: var(--primary-light) !important;
+}
+.postScroller {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  flex: 1;
+  padding: 16px;
+}
+.commentInput {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  bottom: 0;
+  background-color: #FFF4EE
+}
+
+.commentInput textarea {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  resize: none;
+  background-color: transparent;
+
+}
+
+.postPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 !important;
+}
+
+.postScroller input,
+.postScroller textarea {   
+  border: solid 1px var(--text-dark);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.postScroller textarea {
+  flex: 1;
+  resize: none;
+}
+.postContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  color: var(--text-dark);
+  flex: 1;
+}

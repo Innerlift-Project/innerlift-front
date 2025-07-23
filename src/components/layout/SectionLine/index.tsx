@@ -2,12 +2,12 @@ import styles from "./styles.module.css";
 import { ISectionLine } from "@/types/SectionLine";
 
 
-export default function SectionLine(props: ISectionLine){
+export default function SectionLine(props: Readonly<ISectionLine>){
 
     return(
-        <div className={styles['section-box']}>
+        <div className={`${styles.sectionBox} ${props.className || ""} `}>
             <div className={styles.line}></div>
-            {props.text}
+            {props.children}
             <div className={styles.line}></div>
         </div>
 

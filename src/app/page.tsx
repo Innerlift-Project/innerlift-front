@@ -17,7 +17,7 @@ export default function Home() {
             size={ButtonSize.LARGE}
             onClick={() => {router.push('/social');}}
           >
-            Forms
+            Forum
           </Button>
         </PageComponent>
       </NavInterface>

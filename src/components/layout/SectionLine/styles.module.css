@@ -1,4 +1,4 @@
-.section-box{
+.sectionBox{
   width: 100%;
   color: var(--text-light);
   font-size: 14px;
@@ -10,7 +10,7 @@
   gap: 8px;
 }
 
-.section-box .line {
+.sectionBox .line {
   --height: 1px;
   background-color: var(--text-light);
   flex: 1;

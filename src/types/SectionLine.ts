@@ -1,3 +1,4 @@
 export interface ISectionLine{
-  text: string;
+  className?: string;
+  children: React.ReactNode;
 }

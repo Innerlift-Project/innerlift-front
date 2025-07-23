@@ -43,6 +43,7 @@ export default function NavInterface(props: NavInterfaceProps) {
                 <div className={styles.leftMenu}>
                     <div className={styles.topButtons}>
                         <Button className={styles.navBtn} variant={ButtonVariant.GHOST} size={ButtonSize.LARGE} onClick={() => {router.push('/');}}><i className="bi bi-house-fill"></i>Home</Button>
+                        <Button className={styles.navBtn} variant={ButtonVariant.GHOST} size={ButtonSize.LARGE} onClick={() => {router.push('/social');}}><i className="bi bi-at"></i>Forum</Button>
                     </div>
                     <div className={styles.bottomButtons}>
                         <Button className={styles.navBtn} variant={ButtonVariant.GHOST} size={ButtonSize.LARGE} onClick={() => {signOut(); router.push('/access/login');}}>Sair</Button>

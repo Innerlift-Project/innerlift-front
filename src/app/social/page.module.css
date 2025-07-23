@@ -1,11 +1,20 @@
+.social {
+  color: var(--text-dark) !important;
+}
+
 .header {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  height: fit-content;
+  height: 70px;
   width: 100%;
+  line-height: 100%;
+  box-sizing: border-box;
+}
+
+.header h1 {
+  font-family: "Alegreya Sans SC", sans-serif !important;
   line-height: 100%;
 }
 
@@ -13,4 +22,24 @@
   top: 0;
   left: 0;
   position: absolute;
+}
+
+.division i {
+  font-size: 24px;
+}
+
+.postBtn {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
 }
